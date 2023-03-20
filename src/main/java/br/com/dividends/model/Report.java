@@ -1,9 +1,6 @@
-package br.com.nuinvest.model;
-
-import com.sun.corba.se.impl.util.RepositoryIdCache;
+package br.com.dividends.model;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;

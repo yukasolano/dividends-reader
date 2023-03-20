@@ -1,7 +1,7 @@
-package br.com.nuinvest.reader;
+package br.com.dividends.reader;
 
-import br.com.nuinvest.adapter.LineToTransaction;
-import br.com.nuinvest.model.Transaction;
+import br.com.dividends.adapter.LineToTransaction;
+import br.com.dividends.model.Transaction;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class TransactionsReader {
 
-    public static List<Transaction> read(String filename) {
+    public static List<Transaction> read(String filename, LineToTransaction adapter) {
         List<Transaction> transactions = new ArrayList<>();
         try {
             FileInputStream inputStream = new FileInputStream(filename);
@@ -22,7 +22,7 @@ public class TransactionsReader {
             while ((line = br.readLine()) != null) {
 
                 if (count > 1) {
-                    Transaction transaction = LineToTransaction.convert(line);
+                    Transaction transaction = adapter.convert(line);
                     if (transaction != null) {
                         transactions.add(transaction);
                     } else {

@@ -1,4 +1,4 @@
-package br.com.nuinvest.util;
+package br.com.dividends.util;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -14,6 +14,19 @@ public class BasicConvertor {
     }
 
     public static BigDecimal convertToValue(String valueString) {
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        String pattern = "#,##0.0#";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
+        decimalFormat.setParseBigDecimal(true);
+        try {
+            return (BigDecimal) decimalFormat.parse(valueString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return BigDecimal.ZERO;
+        }
+    }
+
+    public static BigDecimal convertBrlToValue(String valueString) {
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
         symbols.setGroupingSeparator('.');
         symbols.setDecimalSeparator(',');

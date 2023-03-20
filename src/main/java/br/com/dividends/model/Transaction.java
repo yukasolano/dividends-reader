@@ -1,4 +1,4 @@
-package br.com.nuinvest.model;
+package br.com.dividends.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
